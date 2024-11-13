@@ -19,6 +19,11 @@ exports.updateProfile = async (userId, updates) => {
   return await user.save();
 };
 
+exports.getUserProfile = async (userId) => {
+  const user = await User.findByPk(userId);
+  return user;
+}
+
 exports.deleteProfile = async (userId) => {
   const user = await User.findByPk(userId);
   if (!user) throw new Error('Profile not found');

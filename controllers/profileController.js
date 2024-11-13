@@ -14,6 +14,16 @@ exports.updateProfile = async (req, res) => {
   }
 };
 
+exports.getProfile = async (req,res) => {
+  try {
+    const {userId} = req.params;
+    const userDetails = await profileService.getUserProfile(userId);
+    res.json({userDetails});
+  } catch(error){
+    res.status(400).json({ message: error.message });
+  }
+}
+
 
 exports.deleteProfile = async (req, res) => {
   try {
