@@ -1,10 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const { connectDB,syncDB } = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
